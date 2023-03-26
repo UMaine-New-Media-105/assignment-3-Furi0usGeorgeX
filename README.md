@@ -84,16 +84,19 @@ Question 3 asked to create a "seed" that falls to the bottom of the canvas when 
 First, I created the function "drawMatey", a sprite of a pirate made of various sized/colored ellipses. I created variables for his x, y, and size so that these could be called up in later functions.
 
 After calling the pirate in the draw function, I set him to spawn at a random X coordinate between 0 and 400, along the Y axis of 50. I then set up his downward movement with the following code.
+
 if (mateyIsFalling == true) {
 mateyY = mateyY + mateySpeed;
 }
 
 The pirate's default state is that he is not moving (mateyIsFalling == false). The question asked that he be set to fall when the mouse is clicked, but in the overarching game, the click command is taken up by the pirate ship's movement. Therefore, I set the pirate to fall when the space bar was pressed, using the following code. Note that the space bar's key code is "32".
-  if (keyCode == 32 && mateyIsFalling == false) {
+
+if (keyCode == 32 && mateyIsFalling == false) {
     mateyIsFalling = true;
   }
 
 After that, I created a function that resets the pirate at the top of the canvas at a random X when he reaches the bottom of the canvas, as seen below.
+
 if (mateyY > 350) {
 mateyY = 40;
 mateyX = random(400);
