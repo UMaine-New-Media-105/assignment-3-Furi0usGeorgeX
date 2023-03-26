@@ -6,6 +6,7 @@ For question 1, I decided to make my "catcher" a pirate ship. I created the spri
 
 My next goal is question 2, in which I will make the ship change shape when the canvas is clicked. I will be making the sails drop open when clicked, and closed when the mouse is not clicked. Additionally, I would like to have moving waves and clouds, sunrays, and make the ship slowly accelerate towards the mouse.
 
+
 Question 2 asks that the shape changes when the mouse is clicked. Originally I had made the sails open when the mouse was clicked, and closed when not clicked. However, I was unable to figure out how to make the ship accelerate towards the mouse when holding the mouse down. Instead, I made the ship accelerate towards a clicked point that generated a "target position" for the ship to move towards, and created an "if/else" statement that opens the sails if the ship is moving, as seen below.
 
 if (objVel.mag() > 0.1) {
@@ -76,3 +77,26 @@ Flavor code was added to make the scene more believeable. The "Perlin Wave" code
   
   Finally, a movement code I created with ChatGPT (or perhaps more accurately, created by ChatGPT with my inputs). This code tells the object to accelerate towards a clicked-on point, and deccelerate when it reaches the point. Works well for slow objects such as pirate ships - fast moving objects tend to orbit or bounce around the stopping point. Link to the isolated movement code below.
   https://editor.p5js.org/Furi0usGeorgeX/sketches/iS5xBd0Ra
+
+
+Question 3 asked to create a "seed" that falls to the bottom of the canvas when the mouse is clicked, and Question 4 asked that the seed be reset to the top when it hits the bottom. I have met both of these requirements in the latest drawing.
+
+First, I created the function "drawMatey", a sprite of a pirate made of various sized/colored ellipses. I created variables for his x, y, and size so that these could be called up in later functions.
+
+After calling the pirate in the draw function, I set him to spawn at a random X coordinate between 0 and 400, along the Y axis of 50. I then set up his downward movement with the following code.
+if (mateyIsFalling == true) {
+mateyY = mateyY + mateySpeed;
+}
+
+The pirate's default state is that he is not moving (mateyIsFalling == false). The question asked that he be set to fall when the mouse is clicked, but in the overarching game, the click command is taken up by the pirate ship's movement. Therefore, I set the pirate to fall when the space bar was pressed, using the following code. Note that the space bar's key code is "32".
+  if (keyCode == 32 && mateyIsFalling == false) {
+    mateyIsFalling = true;
+  }
+
+After that, I created a function that resets the pirate at the top of the canvas at a random X when he reaches the bottom of the canvas, as seen below.
+if (mateyY > 350) {
+mateyY = 40;
+mateyX = random(400);
+}
+
+And now I have a pirate that falls in a perpetual gray purgatory! When I plug him into my game, I would like to adjust the function so that he parachutes down to the water, and is either caught by the pirate ship or slowly drowns in the ocean. Grim? Perhaps. But he is a silly little pirate in a silly little game.
