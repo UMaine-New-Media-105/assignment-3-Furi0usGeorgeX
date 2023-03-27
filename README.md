@@ -117,5 +117,5 @@ Question 5 asks that the "catcher's" appearance changes when it catches the "see
     if (mateyCaught == true) {
     stroke(0);
     drawMatey(10, 130, 0.6);
-    
-    Unfortuately, this means that the pirate appears on the ship only if the pirate (which is simultaneously still falling BEHIND the ship) is still touching the ship, he disappears when the pirate (still falling behind the ship) drowns and resets at the top of the canvas. I plan to remedy this by doing three things when the pirate touches the ship: 1) immediately reset his position at the top, 2) add a "piratesCaught" counter, and add to that counter whenever the pirate touches the boat, and 3) spawn an independent pirate on deck of the ship as the pirate counter increases. Catching more pirates will add more to the deck of the ship.
+ 
+Unfortuately, this means that the pirate appears on the ship only if the pirate (which is simultaneously still falling BEHIND the ship) is still touching the ship, he disappears when the pirate (still falling behind the ship) drowns and resets at the top of the canvas. I plan to remedy this by doing three things when the pirate touches the ship: 1) immediately reset his position at the top, 2) add a "piratesCaught" counter, and add to that counter whenever the pirate touches the boat, and 3) spawn an independent pirate on deck of the ship as the pirate counter increases. Catching more pirates will add more to the deck of the ship.
