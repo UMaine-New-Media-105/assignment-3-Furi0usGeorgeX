@@ -103,3 +103,19 @@ mateyX = random(400);
 }
 
 And now I have a pirate that falls in a perpetual gray purgatory! When I plug him into my game, I would like to adjust the function so that he parachutes down to the water, and is either caught by the pirate ship or slowly drowns in the ocean. Grim? Perhaps. But he is a silly little pirate in a silly little game.
+
+
+Question 5 asks that the "catcher's" appearance changes when it catches the "seed". In this case, the ship changes in appearance when it catches a pirate. I accomplished this by creating a function that determined the distance between the ship and the pirate; if the distance is less than 90 pixels, this changes "mateyCaught" from "false" to "true". Code below.
+  let shipCatchMatey = dist(mateyX, mateyY, objPos.x, objPos.y);
+  if (shipCatchMatey < 90) {
+    mateyCaught = true;
+  } else {
+    mateyCaught = false;
+  }
+  
+  The change that is made when the pirate is caught, is that the pirate appears on deck of the ship. I added the following code to the function of the ship itself.
+    if (mateyCaught == true) {
+    stroke(0);
+    drawMatey(10, 130, 0.6);
+    
+    Unfortuately, this means that the pirate appears on the ship only if the pirate (which is simultaneously still falling BEHIND the ship) is still touching the ship, he disappears when the pirate (still falling behind the ship) drowns and resets at the top of the canvas. I plan to remedy this by doing three things when the pirate touches the ship: 1) immediately reset his position at the top, 2) add a "piratesCaught" counter, and add to that counter whenever the pirate touches the boat, and 3) spawn an independent pirate on deck of the ship as the pirate counter increases. Catching more pirates will add more to the deck of the ship.
